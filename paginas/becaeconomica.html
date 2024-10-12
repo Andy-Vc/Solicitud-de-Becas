@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beca Ayuda Economica</title>
+    <link rel="stylesheet" href="../css/becaeconomica.css">
+</head>
+
+<body>
+    <div id="contenedor-beca">
+        <div class="div-listado">
+            <button id="cerrar-sesion">Cerrar sesión</button>
+            <div class="div-logo">
+                <img class="logo" src="../imagenes/logo.png" alt="logo">
+            </div>
+            <h1 class="h1-info">¡Bienvenido(a)!</h1>
+            <h2 id="mensaje"></h2>
+            <h2 class="h2-info">Información Personal</h2>
+            <ul class="ul-info">
+                <p class="p-info"><strong>Correo:</strong>
+                    <li id="li-codigo"></li>
+                <p class="p-info"><strong>Número:</strong>
+                    <li id="li-numero"></li>
+                <p class="p-info"><strong>Carrera:</strong>
+                    <li id="li-carrera"></li>
+            </ul>
+            <h2 class="h2-beca-listado">Beneficiados de la Beca Inclusión Activa</h2>
+            <ul class="ul-listado" id="ul-listado"></ul>
+        </div>
+        <form id="form-beca">
+            <h3 class="h3-beca">Selección de Beca</h3>
+            <select name="select-becas" id="select-becas" onchange="mostrarInput()"
+                title="Seleccione una opción de beca">
+                <option value="beca-18">Beca 18</option>
+                <option value="beca-socioeconomica">Beca Socieconómica</option>
+                <option value="beca-inclusion">Beca Inclusión Activa</option>
+            </select>
+            <div id="beca-18" class="input-group">
+                <h3 class="h3-beca">Datos Académicos:</h3>
+                <label for="institucion">Institución educativa:</label>
+                <input type="text" id="institucion" name="institucion" required
+                    placeholder="Ingrese el nombre de la institución">
+                <label for="documentacion">Libreta de Estudios:</label>
+                <input type="file" name="documentacion" id="documentacion" accept=".pdf,.jpg,.png" required
+                    title="Por favor, seleccione un archivo en formato PDF, JPG o PNG">
+            </div>
+
+            <div id="beca-socioeconomica" class="input-group">
+                <h3 class="h3-beca">Información Económica:</h3>
+                <label for="ingresos">Ingresos familiares mensuales (en moneda):</label>
+                <input type="number" id="ingresos" name="ingresos" min="1025"
+                    placeholder="Ingrese el total de ingresos mensuales">
+                <label for="miembros">Número de miembros en la familia:</label>
+                <select name="miembros" id="miembros" title="Seleccione el número de miembros en la familia">
+                    <option value="">-- Selecciona un número --</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4 o más</option>
+                </select>
+                <label for="padre">Situación laboral del padre:</label>
+                <input type="text" id="padre" name="padre" placeholder="Ingrese la situación laboral del padre">
+                <label for="madre">Situación laboral de la madre:</label>
+                <input type="text" id="madre" name="madre" placeholder="Ingrese la situación laboral de la madre">
+            </div>
+            <div id="beca-inclusion" class="input-group">
+                <h3 class="h3-beca">Información sobre discapacidad:</h3>
+                <label for="discapacidad">Tipo de Discapacidad</label>
+                <select id="discapacidad" name="discapacidad" title="Seleccione tipo de discapacidad">
+                    <option value="">-- Seleccione su discapacidad --</option>
+                    <option value="visual">Visual</option>
+                    <option value="auditiva">Auditiva</option>
+                    <option value="motora">Motora</option>
+                    <option value="cognitiva">Cognitiva</option>
+                    <option value="otra">Otra</option>
+                </select>
+                <label for="otra-discapacidad" id="otra-label" class="otra-label"
+                    style="display: none;">Especifique:</label>
+                <input type="text" id="otra-discapacidad" name="otra-discapacidad">
+                <label for="documento">Documentación Adjunta (relacionada con su discapacidad):</label>
+                <input type="file" name="documento" id="documento" accept=".pdf,.jpg,.png"
+                    title="Ingrese documentación, como certificado médico o evaluación de discapacidad">
+            </div>
+            <h3>Motivo de la Solicitud:</h3>
+            <textarea id="motivo" name="motivo" rows="4" required title="Por favor, ingrese el motivo de su solicitud"
+                placeholder="Escribe el motivo de tu solicitud aquí..."></textarea>
+            <h3>Declaración:</h3>
+            <label>
+                <input type="checkbox" id="terminos" name="terminos" required> Acepto los términos y condiciones.
+            </label>
+            <button id="enviar-solicitud" type="submit">Enviar Solicitud</button>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <p class="p-modal">Gracias por enviar su solicitud. Por favor, esté atento a su correo para más
+                        información.</p>
+                    <button class="button-modal" id="redirect-button">Ir a la Página Principal</button>
+                </div>
+            </div>
+        </form>
+        <div class="div-listado-2">
+            <h2 class="h2-beca-listado">Beneficiados de la Beca 18</h2>
+            <ul class="ul-listado" id="ul-listado-2"></ul>
+            <h2 class="h2-beca-listado">Beneficiados de la Beca Socioeconómica</h2>
+            <ul class="ul-listado" id="ul-listado-3"></ul>
+        </div>
+    </div>
+    <script src="../js/becasocioeconomica.js"></script>
+</body>
+
+</html>

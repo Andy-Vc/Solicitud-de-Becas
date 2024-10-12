@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beca Ayuda Economica</title>
+    <link rel="stylesheet" href="../css/becasuperacion.css">
+</head>
+
+<body>
+    <div id="contenedor-beca">
+        <div class="div-listado">
+            <button id="cerrar-sesion">Cerrar sesión</button>
+            <div class="div-logo">
+                <img class="logo" src="../imagenes/logo.png" alt="logo">
+            </div>
+            <h1 class="h1-info">¡Bienvenido(a)!</h1>
+            <h2 id="mensaje"></h2>
+            <h2 class="h2-info">Información Personal</h2>
+            <ul class="ul-info">
+                <p class="p-info"><strong>Correo:</strong>
+                    <li id="li-codigo"></li>
+                <p class="p-info"><strong>Número:</strong>
+                    <li id="li-numero"></li>
+                <p class="p-info"><strong>Carrera:</strong>
+                    <li id="li-carrera"></li>
+            </ul>
+            <h2 class="h2-beca-listado">Beneficiados de la Beca Formación Continua</h2>
+            <ul class="ul-listado" id="ul-listado"></ul>
+        </div>
+        <form id="form-beca">
+            <h3 class="h3-beca">Selección de Beca</h3>
+            <select name="select-becas" id="select-becas" onchange="mostrarInput()"
+                title="Seleccione una opción de beca">
+                <option value="beca-formacion">Becas Formación Continua</option>
+                <option value="beca-excelencia">Beca Excelencia e Innovación</option>
+            </select>
+            <div id="beca-formacion" class="input-group">
+                <h3 class="h3-beca">Información Académica:</h3>
+                <label for="select-ciclo">Ciclo Académico Actual:</label>
+                <select name="select-ciclo" id="select-ciclo" required>
+                    <option value="">-- Selecciona su ciclo académico --</option>
+                    <option value="1er">1er</option>
+                    <option value="2do">2do</option>
+                    <option value="3er">3er</option>
+                    <option value="4to">4to</option>
+                    <option value="5to">5to</option>
+                    <option value="6to">6to</option>
+                </select>
+                <label for="select-carrera">Carrera a la que se postula:</label>
+                <select name="select-carrera" id="select-carrera" required>
+                    <option value="">-- Selecciona una carrera --</option>
+                    <option value="publicidad">Publicidad y Branding</option>
+                    <option value="traduccion">Traducción e Interpretación</option>
+                    <option value="disenio">Diseño Gráfico</option>
+                    <option value="gestion">Gestión de Recursos Humanos</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="contabilidad">Contabilidad</option>
+                </select>
+                <label for="compromiso">
+                    <input type="checkbox" id="compromiso" name="compromiso" required>
+                    Te comprometes a cumplir con los requisitos del programa y a participar activamente en las
+                    actividades académicas y extracurriculares.
+                </label>
+            </div>
+            <div id="beca-excelencia" class="input-group">
+                <h3 class="h3-beca">Selección de Información Relevante:</h3>
+                <select name="sub-informacion" id="sub-informacion" title="Selecciona una opción de la lista"
+                    onchange="infoOpcion()">
+                    <option value="">-- Selecciona una Información --</option>
+                    <option value="info-calificaciones">Información de Calificaciones</option>
+                    <option value="info-proyecto">Información del Proyecto</option>
+                </select>
+
+                <div id="info-calificaciones" class="input-group-2">
+                    <label for="calificacion">Promedio Obtenido:</label>
+                    <input type="number" id="calificacion" name="calificacion" min="0" max="20"
+                        placeholder="Ingrese su calificación" title="Calificación entre 0 y 20">
+                    <span class="mensaje-advertencia">⚠️ Si el promedio ingresado es incorrecto, su solicitud será
+                        rechazada y no podrá volver a aplicar.</span>
+                    <label for="documentacion-calificaciones">Certificado de Notas:</label>
+                    <input type="file" name="documentacion" id="documentacion-calificaciones" accept=".pdf,.jpg,.png"
+                        title="Por favor, seleccione un archivo en formato PDF, JPG o PNG">
+                </div>
+
+                <div id="info-proyecto" class="input-group-2">
+                    <label for="documentacion-proyecto">Formato del Proyecto:</label>
+                    <input type="file" name="documentacion" id="documentacion-proyecto" accept=".zip,.rar"
+                        title="Por favor, seleccione un archivo en formato ZIP o RAR">
+                    <span class="mensaje-advertencia"> ⚠️ Si el proyecto fue grupal, menciona a los demás integrantes.
+                        De lo contrario, tu solicitud será rechazada.
+                    </span>
+                    <label for="objetivo-proyecto">Objetivos del Proyecto:</label>
+                    <textarea name="objetivo-proyecto" id="objetivo-proyecto" rows="3"
+                        placeholder="Escriba los objetivos del proyecto aquí..."></textarea>
+                </div>
+            </div>
+            <h3 class="h3-beca">Motivo de la Solicitud:</h3>
+            <textarea id="motivo" name="motivo" rows="4" required title="Por favor, ingrese el motivo de su solicitud"
+                placeholder="Escribe el motivo de tu solicitud aquí..."></textarea>
+            <h3>Declaración:</h3>
+            <label>
+                <input type="checkbox" id="terminos" name="terminos" required> Acepto los términos y condiciones.
+            </label>
+            <button id="enviar-solicitud" type="submit">Enviar Solicitud</button>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <p class="p-modal">Gracias por enviar su solicitud. Por favor, esté atento a su correo para más información.</p>
+                    <button class="button-modal" id="redirect-button">Ir a la Página Principal</button>
+                </div>
+            </div>
+        </form>
+        <div class="div-listado-2">
+            <h2 class="h2-beca-listado">Beneficiados de la Beca Excelencia e Innovación</h2>
+            <ul class="ul-listado" id="ul-listado-2"></ul>
+        </div>
+    </div>
+    <script src="../js/becasuperacion.js"></script>
+</body>
+
+</html>
